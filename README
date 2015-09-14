@@ -1,4 +1,4 @@
-TimeDate
+Time::Date
 
 INSTALLATION
 
@@ -11,7 +11,7 @@ To install this module type the following:
 
 MORE INFO
 
-perldoc TimeDate
+perldoc Time::Date
 
 COPYRIGHT AND LICENCE
 

@@ -1,4 +1,4 @@
-package TimeDate;
+package Time::Date;
 
 use 5.006;
 use strict;
@@ -7,7 +7,7 @@ use POSIX ();
 
 use overload '""' => \&str;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 sub new {
     my ($class, $str) = @_;
@@ -183,19 +183,19 @@ __END__
 
 =head1 NAME
 
-TimeDate - A time and date object for Perl
+Time::Date - A time and date object for Perl
 
 =head1 SYNOPSIS
 
-    use TimeDate;
-    my $t = TimeDate->new("2015-09-14 17:44");
+    use Time::Date;
+    my $t = Time::Date->new("2015-09-14 17:44");
     print $t->strftime("%Y-%m-%d %H:%M:%S") . "\n";
-    my $s = TimeDate->now;
+    my $s = Time::Date->now;
     print "That was " . ($s - $t) . " seconds ago";
 
 =head1 DESCRIPTION
 
-TimeDate is a class that can be used to represent a date as an
+Time::Date is a class that can be used to represent a date as an
 object. Unlike other modules, this one just stores a Unix epoch
 within the object and relies heavily on the underlying Operating
 System so it's very fast. It provides functionality for working
@@ -212,11 +212,11 @@ if you want to parse a date from Ashgabat and display it for a user
 in Rarotonga, you have to write it like this:
 
     $ENV{TZ} = "Asia/Ashgabat";
-    my $t = TimeDate->new("2015-09-14 11:44 am");
+    my $t = Time::Date->new("2015-09-14 11:44 am");
     $ENV{TZ} = "Pacific/Rarotonga";
     print "$t";
 
-Use TimeDate::time_zones subroutine to get a list of valid timezones.
+Use Time::Date::time_zones subroutine to get a list of valid timezones.
 
 =head1 DATE MATH
 
@@ -228,25 +228,25 @@ a day you would write:
 
 =head1 CONSTRUCTORS
 
-=head2 TimeDate->new($str)
+=head2 Time::Date->new($str)
 
 Takes a date in string form and parses it into Unix timestamp. The
 format is meant to work well with MySQL date strings, and you can
 leave any part out after the year and it will fill in the rest for
-you. for example TimeDate->new("2005-10") is the same as
-TimeDate->new("2005-10-01 00:00:00"). It also works fine with dates
-formatted as ISO8601 TimeDate->new("2005-10-01T03:04:05").
+you. for example Time::Date->new("2005-10") is the same as
+Time::Date->new("2005-10-01 00:00:00"). It also works fine with dates
+formatted as ISO8601 Time::Date->new("2005-10-01T03:04:05").
 
-=head2 TimeDate->new_epoch($epoch)
+=head2 Time::Date->new_epoch($epoch)
 
 Takes a epoch as an argument and returns an object. It does no
 parsing. Just wraps the Unix timestamp (epoch) into an object.
 
-=head2 TimeDate->now()
+=head2 Time::Date->now()
 
 Returns an object representing the current time (now).
 
-=head2 TimeDate->mktime($year, $mon, $mday, $hour, $min, $sec, $wday, $yday, $isdst)
+=head2 Time::Date->mktime($year, $mon, $mday, $hour, $min, $sec, $wday, $yday, $isdst)
 
 Returns an object from mktime arguments. See mktime(3) man page for
 how to use mktime. http://linux.die.net/man/3/mktime. mktime is
@@ -254,7 +254,7 @@ very useful for finding the last day of the month since it handles
 overflow and negative numbers nicely. For example, this is the last
 day of Febuary:
 
-    my $t = TimeDate->mktime(115, 2, 0);
+    my $t = Time::Date->mktime(115, 2, 0);
 
 =head1 METHODS
 
@@ -284,13 +284,13 @@ Prints the date in a natural format such as "25 seconds ago" or "in 5 days".
 
 =head1 CLASS SUBROUTINES
 
-=head2 TimeDate::time_zones()
+=head2 Time::Date::time_zones()
 
 Returns a list of time zone names from the Olson database on your
 system. Could be useful if you need to display a list of them. For
 example, if you wanted an HTML select tag:
 
-    my $zones = TimeDate::time_zones;
+    my $zones = Time::Date::time_zones;
     my $output = "<select name=\"timezone\">\n";
     for my $zone (@$zones) {
         if ($zone->{region}) {

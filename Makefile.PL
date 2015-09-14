@@ -10,11 +10,11 @@ if ($mm_ver =~ /_/) {
 }
 
 my %params = (
-    NAME => "TimeDate",
-    VERSION_FROM => "lib/TimeDate.pm",
-    ABSTRACT_FROM  => "lib/TimeDate.pm",
+    NAME => "Time::Date",
+    VERSION_FROM => "lib/Time/Date.pm",
+    ABSTRACT_FROM  => "lib/Time/Date.pm",
     AUTHOR => "Jacob Gelbman <gelbman\@gmail.com>",
-    clean => {FILES => "TimeDate-*.tar.gz *.bak"},
+    clean => {FILES => "Time-Date-*.tar.gz *.bak"},
 );
 
 my @requires = (
