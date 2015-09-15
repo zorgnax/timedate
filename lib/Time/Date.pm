@@ -191,7 +191,7 @@ Time::Date - A time and date object for Perl
     my $t = Time::Date->new("2015-09-14 17:44");
     print $t->strftime("%Y-%m-%d %H:%M:%S") . "\n";
     my $s = Time::Date->now;
-    print "That was " . ($s - $t) . " seconds ago";
+    print "That was " . ($s->{epoch} - $t->{epoch}) . " seconds ago";
 
 =head1 DESCRIPTION
 
