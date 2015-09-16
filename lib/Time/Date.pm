@@ -197,8 +197,8 @@ Time::Date - A time and date object for Perl
 
 Time::Date is a class that can be used to represent a date as an
 object. Unlike other modules, this one just stores a Unix epoch
-within the object and relies heavily on the underlying Operating
-System so it's very fast. It provides functionality for working
+within the object and relies heavily on the underlying operating
+system so it's very fast. It provides functionality for working
 with common representations of dates, displaying dates naturally
 (like "5 minutes ago"), and for listing timezones. Also, it will
 stringify automatically if you use the object in a string.
@@ -206,7 +206,7 @@ stringify automatically if you use the object in a string.
 =head1 TIME ZONES
 
 If you want to use a different timezone, you have to set the TZ
-environment variable as is the standard on most Operating Systems.
+environment variable as is the standard on most operating systems.
 This takes effect when parsing and displaying dates. For example,
 if you want to parse a date from Ashgabat and display it for a user
 in Rarotonga, you have to write it like this:
@@ -216,7 +216,7 @@ in Rarotonga, you have to write it like this:
     $ENV{TZ} = "Pacific/Rarotonga";
     print "$t";
 
-Use Time::Date::time_zones subroutine to get a list of valid timezones.
+Use time_zones subroutine to get a list of valid timezones.
 
 =head1 DATE MATH
 
@@ -228,7 +228,7 @@ a day you would write:
 
 =head1 CONSTRUCTORS
 
-=head2 Time::Date->new($str)
+=head2 new($str)
 
 Takes a date in string form and parses it into Unix timestamp. The
 format is meant to work well with MySQL date strings, and you can
@@ -237,16 +237,16 @@ you. for example Time::Date->new("2005-10") is the same as
 Time::Date->new("2005-10-01 00:00:00"). It also works fine with dates
 formatted as ISO8601 Time::Date->new("2005-10-01T03:04:05").
 
-=head2 Time::Date->new_epoch($epoch)
+=head2 new_epoch($epoch)
 
 Takes a epoch as an argument and returns an object. It does no
 parsing. Just wraps the Unix timestamp (epoch) into an object.
 
-=head2 Time::Date->now()
+=head2 now()
 
 Returns an object representing the current time (now).
 
-=head2 Time::Date->mktime($year, $mon, $mday, $hour, $min, $sec, $wday, $yday, $isdst)
+=head2 mktime($year, $mon, $mday, $hour, $min, $sec, $wday, $yday, $isdst)
 
 Returns an object from mktime arguments. See mktime(3) man page for
 how to use mktime. http://linux.die.net/man/3/mktime. mktime is
@@ -258,7 +258,7 @@ day of Febuary:
 
 =head1 METHODS
 
-=head2 $t->strftime($format)
+=head2 strftime($format)
 
 Returns a string of the date represented by $t. See the strftime(3)
 man page for info on the format options.
@@ -267,10 +267,10 @@ http://man7.org/linux/man-pages/man3/strftime.3.html. For example, you can use:
     print $t->strftime("%B %d, %Y") . "\n";
     # prints "September 14, 2015"
 
-=head2 $t->str()
+=head2 str()
 
 Prints the date as a string. The format is the same as if you used
-$t->strftime("%y-%m-%d %H:%M:%S"). You can always pass this string
+$t->strftime("%Y-%m-%d %H:%M:%S"). You can always pass this string
 back into new(), if you need to recreate the object later. This is
 the default stringification when you use the object in a string.
 for example:
@@ -278,13 +278,13 @@ for example:
     print "$t\n";
     # prints "2015-09-14 14:23:31"
 
-=head2 $t->natural()
+=head2 natural()
 
 Prints the date in a natural format such as "25 seconds ago" or "in 5 days".
 
 =head1 CLASS SUBROUTINES
 
-=head2 Time::Date::time_zones()
+=head2 time_zones()
 
 Returns a list of time zone names from the Olson database on your
 system. Could be useful if you need to display a list of them. For
