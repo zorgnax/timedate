@@ -7,7 +7,7 @@ use POSIX ();
 
 use overload '""' => \&str;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 sub new {
     my ($class, $str) = @_;
@@ -303,6 +303,14 @@ example, if you wanted an HTML select tag:
     }
     $output .= "</optgroup>\n</select>\n";
     print $output;
+
+=head1 METACPAN
+
+L<https://metacpan.org/pod/Time::Date>
+
+=head1 REPOSITORY
+
+L<https://github.com/zorgnax/timedate>
 
 =head1 AUTHOR
 

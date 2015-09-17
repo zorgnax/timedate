@@ -43,5 +43,17 @@ if ($mm_ver >= 6.48) {
     $params{MIN_PERL_VERSION} = 5.006;
 }
 
+if ($mm_ver > 6.45) {
+    $params{META_MERGE} = {
+        "meta-spec" => {version => 2},
+        resources => {
+            repository => {
+                type => "git",
+                web => "https://github.com/zorgnax/timedate",
+                url => "https://github.com/zorgnax/timedate.git",
+            }
+        }
+    };
+}
 WriteMakefile(%params);
 
