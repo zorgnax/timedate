@@ -7,7 +7,7 @@ use POSIX ();
 
 use overload '""' => \&str;
 
-our $VERSION = "0.04";
+our $VERSION = "0.05";
 
 sub new {
     my ($class, $str) = @_;
@@ -66,6 +66,11 @@ sub now {
     my ($class) = @_;
     my $self = bless {epoch => time}, $class;
     return $self;
+}
+
+sub epoch {
+    my ($self) = @_;
+    return $self->{epoch};
 }
 
 sub str {
@@ -280,6 +285,10 @@ for example:
 =head2 natural()
 
 Prints the date in a natural format such as "25 seconds ago" or "in 5 days".
+
+=head2 epoch()
+
+Returns the Unix timestamp (epoch) of the date.
 
 =head1 CLASS SUBROUTINES
 

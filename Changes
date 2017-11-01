@@ -1,5 +1,8 @@
 Revision history for Time::Date
 
+0.05  Wed Nov  1 11:58:55 CDT 2017
+    - Add epoch sub
+
 0.04  Wed Nov  1 11:46:38 CDT 2017
     - Don't cache $now outside natural sub (Thanks srezic)
 
