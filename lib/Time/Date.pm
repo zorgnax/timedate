@@ -7,7 +7,7 @@ use POSIX ();
 
 use overload '""' => \&str;
 
-our $VERSION = "0.03";
+our $VERSION = "0.04";
 
 sub new {
     my ($class, $str) = @_;
@@ -80,10 +80,9 @@ sub strftime {
     return $str;
 }
 
-my $now;
 sub natural {
     my ($self) = @_;
-    $now = time if !$now;
+    my $now = time;
     my $delta = $now - $self->{epoch};
     if ($delta < -32 * 24 * 60 * 60) {
         return POSIX::strftime("%b %Y", localtime($self->{epoch}));
